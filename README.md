@@ -3,7 +3,8 @@
 一个简单易用的在线图片压缩工具，无需后端服务器，完全在浏览器中进行压缩处理。
 
 ## 在线使用
-访问：[https://fbzyf.github.io/image-compressor](https://fbzyf.github.io/image-compressor)
+GitHub Pages 版本：[https://fbzyf.github.io/image-compressor](https://fbzyf.github.io/image-compressor)
+Vercel 版本：[https://image-compressor.vercel.app](https://image-compressor.vercel.app)
 
 ## 特点
 - 🚀 纯浏览器压缩，无需上传到服务器
