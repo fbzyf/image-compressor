@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>丰宝图像压缩工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 更新社交分享元数据 -->
+    <meta property="og:title" content="丰宝图像压缩工具">
+    <meta property="og:description" content="免费在线压缩图片，无需上传到服务器">
+    <meta property="og:image" content="preview.png">
+</head>
+<body>
+    <div class="container">
+        <h1>丰宝图像压缩工具</h1>
+        
+        <!-- 批量上传提示 -->
+        <div class="upload-tip">支持单张或多张图片上传，支持 JPG、PNG、WebP 格式</div>
+        
+        <!-- 上传区域 -->
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-content">
+                <svg class="upload-icon" viewBox="0 0 24 24" width="48" height="48">
+                    <path d="M12 4L12 16M12 4L8 8M12 4L16 8M4 13V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V13" 
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                </svg>
+                <p>拖拽图片到这里或点击上传</p>
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            </div>
+            <!-- 加载动画 -->
+            <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>处理中...</p>
+            </div>
+        </div>
+
+        <!-- 错误提示 -->
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <!-- 批量预览区域 -->
+        <div class="batch-preview" id="batchPreview" style="display: none;">
+            <h2>待处理图片 (<span id="imageCount">0</span>)</h2>
+            <div class="batch-list" id="batchList"></div>
+        </div>
+
+        <!-- 控制区域 -->
+        <div class="controls" id="controls" style="display: none;">
+            <div class="control-group">
+                <div class="quality-control">
+                    <label for="quality">压缩质量：</label>
+                    <input type="range" id="quality" min="0" max="100" value="80">
+                    <span id="qualityValue">80%</span>
+                </div>
+                <div class="format-control">
+                    <label for="format">输出格式：</label>
+                    <select id="format">
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="compressAllBtn" class="primary-btn">压缩全部</button>
+                <button id="downloadAllBtn" class="download-btn" disabled>下载全部</button>
+            </div>
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="stats" id="stats" style="display: none;">
+            <h3>压缩效果</h3>
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <h4>原始图片</h4>
+                    <div class="comparison-image">
+                        <img id="originalPreview" alt="原始图片">
+                        <div class="size-badge" id="originalSize">0 KB</div>
+                    </div>
+                </div>
+                <div class="comparison-divider">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="comparison-item">
+                    <h4>压缩后</h4>
+                    <div class="comparison-image">
+                        <img id="compressedPreview" alt="压缩后">
+                        <div class="size-badge" id="compressedSize">0 KB</div>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-item highlight">
+                <span>节省空间：</span>
+                <span id="savedSpace">0 KB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示弹窗 -->
+    <div class="toast" id="toast"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
